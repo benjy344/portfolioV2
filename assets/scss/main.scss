@@ -1,0 +1,330 @@
+@import 'compass/css3';
+@import 'reset';
+@import 'vars';
+@import 'hover';
+@import 'animations';
+
+
+.main-nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background: transparent;
+    z-index: 20;
+    /*transition: all 1s; */
+    border-bottom: 1px solid transparent;
+
+    &.fixy {
+        top: -61px;
+        position: fixed; 
+        background: white;
+        -webkit-transition: all 1s;
+        transition: all 1s; 
+        border-bottom: 1px solid #D3D3D3;
+        &.active {
+            top: 0px !important;
+            -webkit-transition: all 1s;
+            transition: all 1s; 
+        }
+        
+        .pitipoulpe {        
+            a {
+                color: $purple;                      
+            }  
+            svg path,
+            svg polygon,
+            svg circle {
+                fill: $purple !important;
+            }
+        } 
+        ul li a {
+            color: $purple;
+        }    
+    }
+    
+    .pitipoulpe {
+        float: left;
+        width: 33.33%;
+
+        a {
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-family: $font-title;
+            font-weight: 300;
+            font-size: 15px;            
+        }
+
+        svg {
+            max-width: 50px;
+            margin-top: 10px;
+            margin-left: 30px;
+            height: auto;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    ul {
+        float: right;
+        height: 100%;
+        width: 60%;
+        font-size: 0;
+        text-align: right;
+        margin-right: 30px;
+
+        li {
+            display: inline-block;
+            font-size: 15px; 
+            vertical-align: middle;
+            margin: 0 15px;
+            height: 100%;
+            line-height: 60px;
+
+            a {
+                color: white;
+                text-transform: uppercase;
+                font-family: $font-title;
+                font-weight: 300;
+                text-decoration: none;
+            }
+        }
+    }
+}
+.preview {
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+  }
+.intro {
+    height: 100vh;
+    width: 100vw;    
+    position: relative;
+    overflow: hidden;
+    background: #1B2137;
+    
+    .main-bg {
+        height: 100vh;
+        width: 100vw;
+        background: url(../img/main-bg-min.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    } 
+
+    img {
+        max-width: 250px;
+        height: auto;
+        margin: 90px 0 70px 0;
+    }
+
+    h1 {
+        font-family: $font-title;
+        font-weight: 300;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    h2 {
+        font-family: $font-title;
+        font-weight: 300;
+        color: white;
+        font-size: 25px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .content-logo {
+        height: 500px;
+        width: 400px;
+        position: absolute;
+        right: 50%;
+        -webkit-transform: translateX(50%);
+                transform: translateX(50%);
+        bottom: 50px;
+        background: rgba(255, 255, 255, 0.03);
+        -o-box-shadow: 0px 20px 100px 20px #242322;
+        box-shadow: 0px 20px 100px 20px #242322;
+        filter:progid:DXImageTransform.Microsoft.Shadow(color=#242322, Direction=180, Strength=100);
+
+        .gradient {
+            background: -webkit-linear-gradient(285deg, rgba(152, 84, 241, 1), rgba(62, 82, 143, 0.3));
+            background: -webkit-linear-gradient(75deg, rgba(152, 84, 241, 1), rgba(62, 82, 143, 0.3));
+            background: linear-gradient(15deg, rgba(152, 84, 241, 1), rgba(62, 82, 143, 0.3));
+            width: 100%;
+            height: 100%;
+            display: block;
+            text-align: center;
+
+            svg {
+                max-width: 250px;
+                height: auto;
+                margin: 90px 0 70px 0;
+            }
+            svg path,
+            svg polygon {
+              fill-opacity: 0;
+              fill: #fff !important;
+              stroke: #fff;
+              stroke-width: 0;
+               stroke-dasharray:4350;
+                stroke-dashoffset: 4350;
+              -webkit-animation-name: draw;
+                      animation-name: draw;
+              -webkit-animation-duration: 3s;
+                      animation-duration: 3s;
+              -webkit-animation-iteration-count: 1;
+                      animation-iteration-count: 1;
+              -webkit-animation-fill-mode: forwards;
+                      animation-fill-mode: forwards;
+              -webkit-animation-timing-function: linear;
+                      animation-timing-function: linear;
+            }
+            svg path,
+            svg polygon {
+              -webkit-animation-delay: 0.5s;
+                      animation-delay: 0.5s;
+            }            
+        }
+    }
+
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 1px;
+        height: 50px;
+        left: 50%;
+        background: white;
+    }
+}
+
+.about {
+    min-height: 100vh;
+    width: 100%;
+    font-family: $font;
+    color: $grey;
+
+    .row {
+        width: 100%;
+        font-size: 0;
+        height: 100%;
+        line-height: 100vh;
+
+        .col-6{
+            display: inline-block;
+            width: 50%;
+            font-size: $font-size;
+            vertical-align: middle;
+        }
+        .panel {
+            max-width: 500px;
+            padding: 0 20px;
+            position: relative;
+            margin: 0 auto;
+
+            &.border-left:after {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 4px;
+                background: $purple;
+            }
+        }
+    }
+
+    h1 {
+        font-size: 70px;
+        text-transform: uppercase;
+        text-align: right;
+        font-weight: 300;
+        font-family: $font-title;
+        margin-bottom: 40px;
+        line-height: 40px; 
+    }
+    p {
+        text-align: right;
+        font-family: $font-title;
+        font-size: $font-size;
+        line-height: 20px;
+        margin: 20px 0; 
+
+        a, strong, span {
+            padding: 0;
+        }
+    }
+
+    .slider {
+        overflow: hidden;
+        height: 400px;
+        width: 300px;
+        margin: 0 auto ;
+        position: relative;
+
+        ul {
+            height: 400px;
+            position: absolute;
+            font-size: 0;
+            line-height: 100%;
+
+            li {
+                font-size: inherit;
+                display: inline-block;
+                vertical-align: middle;
+                box-sizing: border-box;
+                height: 100%;
+                line-height: 100%;
+
+                a {
+                    vertical-align: middle;
+                    display: inline-block;
+                    height: 100%;
+                    line-height: 100%;
+                }
+
+                svg {
+                    width: 300px;
+                    vertical-align: middle;
+                    display: inline-block;
+                    height: 100%;
+                }
+
+                svg path,
+                svg polygon {
+                    fill-opacity: 0;
+                    fill: $purple !important;
+                    stroke: $purple;
+                    stroke-width: 0;
+                    stroke-dasharray:4350;
+                    stroke-dashoffset: 4350;
+                    -webkit-animation-name: draw;
+                    animation-name: draw;
+                    -webkit-animation-duration: 3s;
+                    animation-duration: 3s;
+                    -webkit-animation-iteration-count: 1;
+                    animation-iteration-count: 1;
+                    -webkit-animation-fill-mode: forwards;
+                    animation-fill-mode: forwards;
+                    -webkit-animation-timing-function: linear;
+                    animation-timing-function: linear;
+                }
+                svg path,
+                svg polygon {
+                  -webkit-animation-delay: 0.5s;
+                          animation-delay: 0.5s;
+                }      
+            }
+        }
+    }
+}
+
+.purple {
+    color: $purple; 
+}
