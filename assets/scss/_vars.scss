@@ -14,3 +14,11 @@ $purple-dark: #17182D;
 $blue:		  #3e528f;
 
 
+// Transition Ease
+@mixin ease($time:333ms, $attr:all, $curve:ease-in-out) {
+	  -webkit-transition: $attr $time $curve;
+	  -moz-transition: $attr $time $curve;
+	  -o-transition: $attr $time $curve;
+	  -ms-transition: $attr $time $curve;
+	  transition: $attr $time $curve;
+}

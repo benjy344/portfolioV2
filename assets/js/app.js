@@ -12,6 +12,7 @@ let App = {
 		this.$slider   = this.$el.find('.js-slider');
 		this.$skills   = this.$el.find('.js-skills-content');
 		this.$bands    = this.$el.find('.js-band');
+		this.$form     = this.$el.find('.js-form');
 		this.tiltSettings = [
 			{},
 			{
@@ -194,6 +195,9 @@ let App = {
 
 		//preload img preview 
 		this.initPortfolioPreview();
+
+		//init form 
+		if (this.$form.length) this.initForm();
 		
 	},
 
@@ -302,7 +306,8 @@ let App = {
 			let _band = $(current);
 
 			if(this.isVisible(current)) {
-				_band.hasClass('js-band-right') ? _band.css('right', 0) : _band.css('left', 0) 
+				_band.hasClass('js-band-right') ? _band.css('right', 0) : _band.css('left', 0);
+				if(_band.hasClass('js-last-band')) this.$form.addClass('visible');
 			}
 		})
 	},
@@ -368,6 +373,54 @@ let App = {
 				duration: 400,
 				easing: 'easeOutExpo'
 			});
+		});
+	},
+
+	initForm() {
+
+		$('textarea').blur(function () {
+		    $('#hire textarea').each(function () {
+		        let $this = $(this);
+		        console.log(this.value)
+		        if ( this.value != '' ) {
+		          $this.addClass('focused');
+		          $('textarea + label + span').css({'opacity': 1});
+		        }
+		        else {
+		          $this.removeClass('focused');
+		          $('textarea + label + span').css({'opacity': 0});
+		        }
+		    });
+		});
+
+		$('#hire .field:first-child input').blur(function () {
+		    $('#hire .field:first-child input').each(function () {
+		        let $this = $(this);
+		        console.log(this.value)
+		        if ( this.value != '' ) {
+		          $this.addClass('focused');
+		          $('.field:first-child input + label + span').css({'opacity': 1});
+		        }
+		        else {
+		          $this.removeClass('focused');
+		          $('.field:first-child input + label + span').css({'opacity': 0});
+		        }
+		    });
+		});
+
+		$('#hire .field:nth-child(2) input').blur(function () {
+		    $('#hire .field:nth-child(2) input').each(function () {
+		        let $this = $(this);
+		        console.log(this.value)
+		        if ( this.value != '' ) {
+		          $this.addClass('focused');
+		          $('.field:nth-child(2) input + label + span').css({'opacity': 1});
+		        }
+		        else {
+		          $this.removeClass('focused');
+		          $('.field:nth-child(2) input + label + span').css({'opacity': 0});
+		        }
+		    });
 		});
 	}
 

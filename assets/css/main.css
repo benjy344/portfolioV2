@@ -328,6 +328,12 @@ table {
   max-width: 1400px;
   margin: 0 auto;
 }
+.container.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: hidden;
+}
 
 .intro {
   height: 100vh;
@@ -607,19 +613,8 @@ table {
 #portfolio {
   position: relative;
   min-height: 100vh;
-}
-#portfolio .band {
-  height: 200px;
-  width: 100%;
-  transition: all 1s;
-  background: #9854f1;
-  position: relative;
-}
-#portfolio .band.band-left {
-  left: -100%;
-}
-#portfolio .band.band-right {
-  right: -100%;
+  overflow-x: hidden;
+  padding: 10px 0;
 }
 #portfolio .prePortfolio {
   min-height: 90vh;
@@ -661,48 +656,44 @@ table {
   position: relative;
   width: 300px;
   height: 415px;
-  margin: 1.5rem 2.5rem;
+  margin: 3rem 2.5rem;
   color: #fff;
   flex: none;
   perspective: 1000px;
 }
-
 .tilter * {
   pointer-events: none;
 }
-
-.tilter:hover,
-.tilter:focus {
+.tilter .tilter__figure::before {
+  box-shadow: none;
+}
+.tilter:hover, .tilter:focus {
   color: #fff;
   outline: none;
 }
-
-.tilter__figure,
-.tilter__image {
+.tilter .tilter__figure,
+.tilter .tilter__image {
   margin: 0;
   width: 100%;
   height: 100%;
   display: block;
 }
-
-.tilter__figure > * {
+.tilter .tilter__figure > *,
+.tilter .tilter__image > * {
   transform: translateZ(0px);
   /* Force correct stacking order */
 }
-
-.smooth .tilter__figure,
-.smooth .tilter__deco--overlay,
-.smooth .tilter__deco--lines,
-.smooth .tilter__deco--shine div,
-.smooth .tilter__caption {
+.tilter .smooth .tilter__figure,
+.tilter .smooth .tilter__deco--overlay,
+.tilter .smooth .tilter__deco--lines,
+.tilter .smooth .tilter__deco--shine div,
+.tilter .smooth .tilter__caption {
   transition: transform 0.2s ease-out;
 }
-
-.tilter__figure {
+.tilter .tilter__figure {
   position: relative;
 }
-
-.tilter__figure::before {
+.tilter .tilter__figure:before {
   content: '';
   position: absolute;
   width: 90%;
@@ -711,8 +702,7 @@ table {
   left: 5%;
   box-shadow: 0 30px 20px rgba(35, 32, 39, 0.5);
 }
-
-.tilter__deco {
+.tilter .tilter__deco {
   position: absolute;
   top: 0;
   left: 0;
@@ -720,14 +710,12 @@ table {
   height: 100%;
   overflow: hidden;
 }
-
-.tilter__deco--overlay {
+.tilter .tilter__deco--overlay {
   background: -webkit-linear-gradient(285deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
   background: -webkit-linear-gradient(75deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
   background: linear-gradient(15deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
 }
-
-.tilter__deco--shine div {
+.tilter .tilter__deco--shine div {
   position: absolute;
   width: 200%;
   height: 200%;
@@ -737,21 +725,18 @@ table {
   background: -webkit-linear-gradient(75deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
   background: linear-gradient(15deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
 }
-
-.tilter__deco--lines {
+.tilter .tilter__deco--lines {
   fill: none;
   stroke: #fff;
   stroke-width: 1.5px;
 }
-
-.tilter__caption {
+.tilter .tilter__caption {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 4rem;
 }
-
-.tilter__title {
+.tilter .tilter__title {
   margin: 0;
   font-weight: normal;
   font-size: 2.5rem;
@@ -759,30 +744,195 @@ table {
   line-height: 1;
   text-transform: uppercase;
 }
-
-.tilter__description {
+.tilter .tilter__description {
   margin: 1rem 0 0 0;
   font-size: 0.85rem;
   letter-spacing: 0.15rem;
   font-family: "Source Sans Pro", sans-serif;
 }
-
-.tilter--5 .tilter__deco--lines path {
+.tilter .tilter__deco--lines path {
   stroke-dasharray: 1270;
   stroke-dashoffset: 1270;
   transition: stroke-dashoffset 0.7s;
 }
-
-.tilter--5:hover .tilter__deco--lines path {
+.tilter:hover .tilter__deco--lines path {
   stroke-dashoffset: 0;
 }
-
-.tilter--5 .tilter__figure::before {
+.tilter .tilter__figure::before {
   box-shadow: none;
 }
 
 #contact {
-  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+#contact .band {
+  height: 120px;
+  width: 100%;
+  transition: all 1s;
+  background: #9854f1;
+  position: relative;
+}
+#contact .band.band-left {
+  left: -100%;
+}
+#contact .band.band-right {
+  right: -100%;
+}
+#contact h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 300;
+  color: #494949;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 40px;
+  line-height: 70px;
+}
+#contact form {
+  height: 90%;
+  width: 100%;
+  max-width: 700px;
+  background: white;
+  -o-box-shadow: 0px 20px 100px 20px #242322;
+  box-shadow: 0px 20px 100px 20px #242322;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=#242322, Direction=180, Strength=100);
+  position: absolute;
+  transform: translateX(-50%) translateY(0%);
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transition: all 1.5s;
+}
+#contact form.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-50%);
+  transition: all 1.5s;
+  transition-delay: 0.5s;
+}
+#contact form .field {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 400px;
+  position: relative;
+  margin-bottom: 15px;
+}
+#contact form .field label {
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #9854f1;
+  width: 100%;
+  padding: 10px 0 10px 10px;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 0.075em;
+  border: 1px solid #9854f1;
+  color: white;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+#contact form .field label + span {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+  opacity: 0;
+  color: white;
+  display: block;
+  position: absolute;
+  top: 12px;
+  left: 7%;
+  font-size: 15px;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+#contact form .field input[type="text"],
+#contact form .field textarea {
+  border: none;
+  background: white;
+  width: 80%;
+  margin: 0;
+  padding: 9px 0;
+  padding-left: 22.5%;
+  color: #9854f1;
+  font-size: 15px;
+  font-weight: 300;
+  text-transform: uppercase;
+  border: 1px solid #D3D3D3;
+}
+#contact form .field input[type="text"]#msg,
+#contact form .field textarea#msg {
+  height: 18px;
+  resize: none;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+#contact form .field input[type="text"]:focus, #contact form .field input[type="text"].focused,
+#contact form .field textarea:focus,
+#contact form .field textarea.focused {
+  outline: none;
+}
+#contact form .field input[type="text"]:focus#msg, #contact form .field input[type="text"].focused#msg,
+#contact form .field textarea:focus#msg,
+#contact form .field textarea.focused#msg {
+  padding-bottom: 120px;
+}
+#contact form .field input[type="text"]:focus + label, #contact form .field input[type="text"].focused + label,
+#contact form .field textarea:focus + label,
+#contact form .field textarea.focused + label {
+  width: 18%;
+  background: #9854f1;
+  color: white;
+}
+#contact form .field:hover label {
+  width: 18%;
+  background: #9854f1;
+  color: white;
+}
+#contact form input[type="submit"] {
+  background: #9854f1;
+  color: white;
+  -webkit-appearance: none;
+  border: none;
+  text-transform: uppercase;
+  position: relative;
+  margin: 0 auto;
+  padding: 9px 50px;
+  font-size: 15px;
+  display: block;
+  border: 1px solid white;
+  cursor: pointer;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+#contact form input[type="submit"]:hover {
+  border: 1px solid #9854f1;
+  background: white;
+  color: #9854f1;
+}
+#contact form input[type="submit"]:focus {
+  border: 1px solid #9854f1;
+  background: white;
+  color: #9854f1;
+}
+
+footer {
+  height: 80px;
+  text-align: center;
+  color: #494949;
 }
 
 .purple {
