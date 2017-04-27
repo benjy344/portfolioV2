@@ -14,7 +14,7 @@ class TiltFx {
 		let posx = 0;
 		let posy = 0;
 
-		if (!e) let e = window.event;
+		if (!e) {let e = window.event}
 		if (e.pageX || e.pageY) 	{
 			posx = e.pageX;
 			posy = e.pageY;
@@ -32,7 +32,7 @@ class TiltFx {
 	init(el, options) {
 		this.DOM                       = {};
 		this.DOM.el                    = el;
-		this.options                   = options = {
+		this.options                   = {
 												movement: {
 													imgWrapper : {
 														translation : {x: 0, y: 0, z: 0},
@@ -79,7 +79,7 @@ class TiltFx {
 													}
 												}
 											};
-		extend(this.options, options);		
+		this.extend(this.options, options);		
 		this.DOM.animatable            = {};
 		this.DOM.animatable.imgWrapper = this.DOM.el.querySelector('.tilter__figure');
 		this.DOM.animatable.lines      = this.DOM.el.querySelector('.tilter__deco--lines');
@@ -90,29 +90,23 @@ class TiltFx {
 	}
 
 	initEvents() {		
-		
-		this.mouseenterFn()
-		
-		this.mousemoveFn(ev);
-		
-		this.mouseleaveFn(ev) ;
 
-		this.DOM.el.addEventListener('mousemove', this.mousemoveFn);
-		this.DOM.el.addEventListener('mouseleave', this.mouseleaveFn);
-		this.DOM.el.addEventListener('mouseenter', this.mouseenterFn);
+		$(this.DOM.el).on('mousemove',  (e) => {this.mousemoveFn(e)});
+		$(this.DOM.el).on('mouseleave', (e) => {this.mouseleaveFn(e)});
+		$(this.DOM.el).on('mouseenter', ( ) => {this.mouseenterFn()});
 	}
 
-	mousemoveFn(ev) {
+	mousemoveFn(ev) {		
 		requestAnimationFrame(() => { this.layout(ev); });
 	}
 
-	mouseenterFn() {
+	mouseenterFn() {		
 		for(let key in this.DOM.animatable) {
 			anime.remove(this.DOM.animatable[key]);
 		}
 	}
 
-	mouseleaveFn(ev) {
+	mouseleaveFn(ev) {		
 		requestAnimationFrame(() => {
 			for(let key in this.DOM.animatable) {
 				if( this.options.movement[key] == undefined ) {continue;}
@@ -137,7 +131,7 @@ class TiltFx {
 
 	layout(ev) {
 		// Mouse position relative to the document.
-		let mousepos = getMousePos(ev);
+		let mousepos = this.getMousePos(ev);
 			// Document scrolls.
 		let	docScrolls = {left : document.body.scrollLeft + document.documentElement.scrollLeft, top : document.body.scrollTop + document.documentElement.scrollTop};
 		let	bounds = this.DOM.el.getBoundingClientRect();
@@ -181,7 +175,7 @@ class TiltFx {
 				obj[k] = [-1*obj[k],obj[k]];
 			}
 		}
-	};
+	}
 
 }
 

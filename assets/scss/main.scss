@@ -412,7 +412,7 @@
 #portfolio {
     position: relative;
     min-height: 100vh;
-    overflow: hidden;
+    //overflow: hidden;
 
     .band {
         height: 200px;
@@ -430,35 +430,54 @@
     }
 
     .prePortfolio {
-        position: absolute;
-        height: 90vh; 
+        min-height: 90vh; 
         //background: white; 
-        width: 90vw;
+        //width: 90vw;
         max-width: $max-width;
-        margin: 5vh 5vw;
+        margin: 0 auto;
         left: 0; 
         top: 0; 
+        font-size: 0;
 
         h1 {
             font-size: 70px;
             text-transform: uppercase;
             text-align: left;
             font-weight: 300;
-            color: white; 
+            color: $grey; 
             font-family: $font-title;
             margin-bottom: 40px;
-            line-height: 40px;  
+            line-height: 40px; 
+            margin-left:2.5rem; 
+        }
+        .row {
+            width: 100%;
+            max-width: $max-width;
+            margin: 0 auto;
+            font-size: 0;
+            height: 100vh;
+            line-height: 100vh;
+
+            .col-4 {
+                display: inline-block;
+                width: 33.33%;
+                font-size: $font-size;
+                //vertical-align: top;
+                padding: 0 30px;
+                box-sizing: border-box;
+            }
+
         }
 
     }
 }
 
 .tilter {
-    display: block;
+    display: inline-block;
     position: relative;
     width: 300px;
     height: 415px;
-    margin: 1.5em 2.5em;
+    margin: 1.5rem 2.5rem;
     color: #fff;
     flex: none;
     perspective: 1000px;
@@ -518,7 +537,9 @@
 }
 
 .tilter__deco--overlay {
-    background-image: linear-gradient(45deg, rgba(226, 60, 99, 0.4), rgba(145, 58, 252, 0.4), rgba(16, 11, 192, 0.4));
+    background: -webkit-linear-gradient(285deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
+            background: -webkit-linear-gradient(75deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
+            background: linear-gradient(15deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
 }
 
 .tilter__deco--shine div {
@@ -527,7 +548,9 @@
     height: 200%;
     top: -50%;
     left: -50%;
-    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+    background: -webkit-linear-gradient(285deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
+            background: -webkit-linear-gradient(75deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
+            background: linear-gradient(15deg, rgba(152, 84, 241, 0.7), rgba(62, 82, 143, 0.3));
 }
 
 .tilter__deco--lines {
@@ -540,21 +563,23 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 4em;
+    padding: 4rem;
 }
 
 .tilter__title {
     margin: 0;
     font-weight: normal;
-    font-size: 2.5em;
-    font-family: 'Abril Fatface', serif;
+    font-size: 2.5rem;
+    font-family: $font-title;//'Abril Fatface', serif;
     line-height: 1;
+    text-transform: uppercase;
 }
 
 .tilter__description {
-    margin: 1em 0 0 0;
-    font-size: 0.85em;
-    letter-spacing: 0.15em;
+    margin: 1rem 0 0 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.15rem;
+    font-family: $font-title;
 }
 .tilter--5 .tilter__deco--lines path {
     stroke-dasharray: 1270;
