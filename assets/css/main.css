@@ -189,6 +189,54 @@ table {
     fill-opacity: 1;
   }
 }
+@-webkit-keyframes drawSlider {
+  1% {
+    stroke-width: 1;
+    /*stroke-dasharray:2175;*/
+    stroke-dashoffset: 2350;
+  }
+  69% {
+    fill-opacity: 0;
+  }
+  90% {
+    fill-opacity: 1;
+  }
+  99% {
+    /*stroke-dasharray: 4350;*/
+    /*stroke-dashoffset: 0;*/
+    stroke-width: 1;
+    fill-opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-width: 1;
+    fill-opacity: 1;
+  }
+}
+@keyframes drawSlider {
+  1% {
+    stroke-width: 1;
+    /*stroke-dasharray:2175;*/
+    stroke-dashoffset: 2350;
+  }
+  69% {
+    fill-opacity: 0;
+  }
+  90% {
+    fill-opacity: 1;
+  }
+  99% {
+    /*stroke-dasharray: 4350;*/
+    /*stroke-dashoffset: 0;*/
+    stroke-width: 1;
+    fill-opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-width: 1;
+    fill-opacity: 1;
+  }
+}
 .main-nav {
   position: absolute;
   top: 0;
@@ -274,6 +322,11 @@ table {
 .preview {
   filter: blur(10px);
   -webkit-filter: blur(10px);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .intro {
@@ -381,8 +434,10 @@ table {
 }
 .about .row {
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   font-size: 0;
-  height: 100%;
+  height: 100vh;
   line-height: 100vh;
 }
 .about .row .col-6 {
@@ -390,6 +445,17 @@ table {
   width: 50%;
   font-size: 15px;
   vertical-align: middle;
+}
+.about .row .col-4 {
+  display: inline-block;
+  width: 33.33%;
+  font-size: 15px;
+  vertical-align: top;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+.about .row .col-12 {
+  display: block;
 }
 .about .row .panel {
   max-width: 500px;
@@ -445,6 +511,29 @@ table {
   box-sizing: border-box;
   height: 100%;
   line-height: 100%;
+  visibility: hidden;
+}
+.about .slider ul li.active {
+  visibility: visible;
+}
+.about .slider ul li.active svg path,
+.about .slider ul li.active svg polygon {
+  fill-opacity: 0;
+  fill: #9854f1 !important;
+  stroke: #9854f1;
+  stroke-width: 0;
+  stroke-dasharray: 2350;
+  stroke-dashoffset: 2350;
+  -webkit-animation-name: drawSlider;
+  animation-name: drawSlider;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 .about .slider ul li a {
   vertical-align: middle;
@@ -458,29 +547,222 @@ table {
   display: inline-block;
   height: 100%;
 }
-.about .slider ul li svg path,
-.about .slider ul li svg polygon {
-  fill-opacity: 0;
-  fill: #9854f1 !important;
-  stroke: #9854f1;
-  stroke-width: 0;
-  stroke-dasharray: 4350;
-  stroke-dashoffset: 4350;
-  -webkit-animation-name: draw;
-  animation-name: draw;
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
+.about .competences {
+  line-height: normal;
+  height: 85vh;
 }
-.about .slider ul li svg path,
-.about .slider ul li svg polygon {
-  -webkit-animation-delay: 0.5s;
-  animation-delay: 0.5s;
+.about .competences h1 {
+  margin-right: 10%;
+}
+.about .competences .col-4 {
+  position: relative;
+  height: 340px;
+  max-height: 340px;
+}
+.about .competences .col-4:before {
+  content: attr(data-title);
+  color: #D3D3D3;
+  position: absolute;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  text-align: right;
+  text-transform: uppercase;
+  top: 0px;
+  left: -46%;
+  -webkit-transform: rotate(-90deg) translateX(-42%);
+  transform: rotate(-90deg) translateX(-42%);
+  display: block;
+  height: 70px;
+  line-height: 70px;
+  width: 100%;
+  font-size: 35px;
+}
+.about .competences .comp-content {
+  margin-bottom: 15px;
+  position: relative;
+}
+.about .competences .comp-title {
+  margin-bottom: 5px;
+  display: block;
+}
+.about .competences .persent-content {
+  background: #D3D3D3;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  height: 8px;
+}
+.about .competences .percent {
+  background: #9854f1;
+  width: 10px;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  -webkit-transition: width 1.4s;
+  transition: width 1.4s;
+}
+
+#portfolio {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+#portfolio .band {
+  height: 200px;
+  width: 100%;
+  transition: all 1s;
+  background: #9854f1;
+  position: relative;
+}
+#portfolio .band.band-left {
+  left: -100%;
+}
+#portfolio .band.band-right {
+  right: -100%;
+}
+#portfolio .prePortfolio {
+  position: absolute;
+  height: 90vh;
+  width: 90vw;
+  max-width: 1400px;
+  margin: 5vh 5vw;
+  left: 0;
+  top: 0;
+}
+#portfolio .prePortfolio h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 300;
+  color: white;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 40px;
+  line-height: 40px;
+}
+
+.tilter {
+  display: block;
+  position: relative;
+  width: 300px;
+  height: 415px;
+  margin: 1.5em 2.5em;
+  color: #fff;
+  flex: none;
+  perspective: 1000px;
+}
+
+.tilter * {
+  pointer-events: none;
+}
+
+.tilter:hover,
+.tilter:focus {
+  color: #fff;
+  outline: none;
+}
+
+.tilter__figure,
+.tilter__image {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tilter__figure > * {
+  transform: translateZ(0px);
+  /* Force correct stacking order */
+}
+
+.smooth .tilter__figure,
+.smooth .tilter__deco--overlay,
+.smooth .tilter__deco--lines,
+.smooth .tilter__deco--shine div,
+.smooth .tilter__caption {
+  transition: transform 0.2s ease-out;
+}
+
+.tilter__figure {
+  position: relative;
+}
+
+.tilter__figure::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 5%;
+  left: 5%;
+  box-shadow: 0 30px 20px rgba(35, 32, 39, 0.5);
+}
+
+.tilter__deco {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tilter__deco--overlay {
+  background-image: linear-gradient(45deg, rgba(226, 60, 99, 0.4), rgba(145, 58, 252, 0.4), rgba(16, 11, 192, 0.4));
+}
+
+.tilter__deco--shine div {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0.25) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.tilter__deco--lines {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.tilter__caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 4em;
+}
+
+.tilter__title {
+  margin: 0;
+  font-weight: normal;
+  font-size: 2.5em;
+  font-family: 'Abril Fatface', serif;
+  line-height: 1;
+}
+
+.tilter__description {
+  margin: 1em 0 0 0;
+  font-size: 0.85em;
+  letter-spacing: 0.15em;
+}
+
+.tilter--5 .tilter__deco--lines path {
+  stroke-dasharray: 1270;
+  stroke-dashoffset: 1270;
+  transition: stroke-dashoffset 0.7s;
+}
+
+.tilter--5:hover .tilter__deco--lines path {
+  stroke-dashoffset: 0;
+}
+
+.tilter--5 .tilter__figure::before {
+  box-shadow: none;
+}
+
+#contact {
+  height: 100vh;
 }
 
 .purple {

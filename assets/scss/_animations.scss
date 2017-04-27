@@ -35,3 +35,52 @@
         fill-opacity: 1;
     }
 }
+@-webkit-keyframes drawSlider {
+    1% {
+        stroke-width: 1;
+        /*stroke-dasharray:2175;*/
+        stroke-dashoffset: 2350;
+    }
+    69% {
+        fill-opacity: 0;
+    }
+    90% {
+        fill-opacity: 1;
+    }
+    99% {
+        /*stroke-dasharray: 4350;*/
+        /*stroke-dashoffset: 0;*/
+        stroke-width: 1;
+        fill-opacity: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        stroke-width: 1;
+        fill-opacity: 1;
+    }
+}
+
+@keyframes drawSlider {
+    1% {
+        stroke-width: 1;
+        /*stroke-dasharray:2175;*/
+        stroke-dashoffset: 2350;
+    }
+    69% {
+        fill-opacity: 0;
+    }
+    90% {
+        fill-opacity: 1;
+    }
+    99% {
+        /*stroke-dasharray: 4350;*/
+        /*stroke-dashoffset: 0;*/
+        stroke-width: 1;
+        fill-opacity: 1;
+    }
+    100% {
+        stroke-dashoffset: 0;
+        stroke-width: 1;
+        fill-opacity: 1;
+    }
+}
