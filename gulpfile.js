@@ -14,7 +14,8 @@ let tasks = {
     dev:      require('./gulp-tasks/dev.js'),
     js:       require('./gulp-tasks/js.js'),
     babelify: require('./gulp-tasks/babelify.js'),
-    watch:    require('./gulp-tasks/watch.js')
+    watch:    require('./gulp-tasks/watch.js'),
+    font:     require('./gulp-tasks/icons.js')
 };
 
 
@@ -47,13 +48,14 @@ gulp.task('js',  tasks.js);
  */
 gulp.task('dev', tasks.dev);
 
+
 /**
- * ======== release ========
- *  jshint
- *  js (handlebars, concat, babelify, uglify)
- *  icons (sprites, iconfont, css)
- *  copy
+ * ======== font ========
+ * iconfont
+ * css
  */
+gulp.task('font', tasks.font);
+
 
 gulp.task("watch", tasks.watch);
 gulp.task("default", tasks.dev);

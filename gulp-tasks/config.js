@@ -5,9 +5,9 @@ let config= {
         scss: './assets/scss/',
         css: './assets/css/',
         dist: './dist/',
-        fonts: './assets/fonts/',
-        cssRelativeFonts: '../fonts/',
-        svg: './assets/img/svg/',
+        fonts: './dist/assets/fonts/',
+        cssRelativeFonts: '../fonts/icons/',
+        svg: './assets/img/svg-font/',
         templates: './assets/templates/'
     },
 

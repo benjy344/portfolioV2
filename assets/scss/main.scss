@@ -2,6 +2,7 @@
 @import 'reset';
 @import 'vars';
 @import 'hover';
+@import 'icons';
 @import 'animations';
 
 
@@ -699,6 +700,10 @@
                 font-weight: 300;              
                 text-transform: uppercase;
                 border: 1px solid $grey-light;
+
+                &::-moz-placeholder {
+                   font-family: $font-title; 
+                }
 
                 &#msg {
                     height: 18px;

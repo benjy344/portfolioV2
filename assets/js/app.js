@@ -218,7 +218,8 @@ let App = {
 		this.$linkTo.on('click touch', (e) => {
 			let target   = $(e.currentTarget).attr('href');
 			let $section = this.$el.find(target);
-			this.$el.animate({
+			console.log('scroll to')
+			$('body, html').animate({
 		        scrollTop: $section.offset().top
 		    }, 1000);
 		})
