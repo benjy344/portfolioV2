@@ -5,14 +5,15 @@ let App = {
 
 	
 	init() {
-		this.$el       = $('body');
-		this.$linkTo   = this.$el.find('.js-link-to');
-		this.nav 	   = this.$el.find('.main-nav');		
-		this.$previews = this.$el.find('.js-preview');
-		this.$slider   = this.$el.find('.js-slider');
-		this.$skills   = this.$el.find('.js-skills-content');
-		this.$bands    = this.$el.find('.js-band');
-		this.$form     = this.$el.find('.js-form');
+		this.$el          = $('body');
+		this.$linkTo      = this.$el.find('.js-link-to');
+		this.nav 	      = this.$el.find('.main-nav');		
+		this.$previews    = this.$el.find('.js-preview');
+		this.$slider      = this.$el.find('.js-slider');
+		this.$skills      = this.$el.find('.js-skills-content');
+		this.$bands       = this.$el.find('.js-band');
+		this.$openGalery  = this.$el.find('.js-open-galery');
+		this.$form        = this.$el.find('.js-form');
 		this.tiltSettings = [
 			{},
 			{
@@ -190,6 +191,9 @@ let App = {
 		// function reval 
 		this.reval();	
 
+		//open galery 
+		this.$openGalery.on('click', this.openGalery)
+
 		//preload img 
 		if (this.$previews.length) this.preload();	
 
@@ -218,7 +222,6 @@ let App = {
 		this.$linkTo.on('click touch', (e) => {
 			let target   = $(e.currentTarget).attr('href');
 			let $section = this.$el.find(target);
-			console.log('scroll to')
 			$('body, html').animate({
 		        scrollTop: $section.offset().top
 		    }, 1000);
@@ -239,6 +242,13 @@ let App = {
 			isVisible = false;
 		}
 		return isVisible ;
+	},
+
+	openGalery(e) {
+		e.preventDefault();
+
+		let target = $(e.target).attr('href');
+		
 	},
 
 	scroll() {
@@ -379,50 +389,110 @@ let App = {
 
 	initForm() {
 
-		$('textarea').blur(function () {
-		    $('#hire textarea').each(function () {
+		let $form = this.$form; 
+		let checkForm = [ false, false, false];
+
+		$form.find('textarea').blur(function () {
+			console.log('blur')
+		    $form.find('textarea').each(function () {
+		    	console.log('value', this.value === '')
 		        let $this = $(this);
-		        console.log(this.value)
-		        if ( this.value != '' ) {
-		          $this.addClass('focused');
-		          $('textarea + label + span').css({'opacity': 1});
+		        let regex = new RegExp("^[a-zA-ZÀ-úÀ-ÿ0-9$€. ]+$");
+
+		        if (regex.test(this.value) ) {
+		        	console.log('regex');
+		            $this.addClass('focused');
+		            $('.msg-box label').css({'color': 'transparent'});
+		          	$('.msg-box .js-check').css({'opacity': 1});
+		          	$('.msg-box .js-error').css({'opacity': 0});
+		          	checkForm[0] = true;
+		        }
+		        else if (this.value === '') {
+		        	console.log('coucuo')
+		          	$this.removeClass('focused');
+		          	$('.msg-box label').css({'color': 'white'});
+		          	$('.msg-box input + label + span').css({'opacity': 0});
+		          	checkForm[0] = false;
 		        }
 		        else {
-		          $this.removeClass('focused');
-		          $('textarea + label + span').css({'opacity': 0});
+		        	$this.addClass('focused');
+		        	$('.msg-box label').css({'color': 'transparent'});
+		        	$('.msg-box .js-check').css({'opacity': 0});
+		          	$('.msg-box .js-error').css({'opacity': 1});
+		          	checkForm[0] = false;
 		        }
 		    });
 		});
 
-		$('#hire .field:first-child input').blur(function () {
-		    $('#hire .field:first-child input').each(function () {
+		$form.find('.name-box input').blur(function () {
+
+		    $form.find('.name-box input').each(function () {
 		        let $this = $(this);
-		        console.log(this.value)
-		        if ( this.value != '' ) {
-		          $this.addClass('focused');
-		          $('.field:first-child input + label + span').css({'opacity': 1});
+		        let regex = new RegExp("^[a-zA-ZÀ-úÀ-ÿ ]*$");
+
+		        if (regex.test(this.value) ) {
+		            $this.addClass('focused');
+		            $('.name-box label').css({'color': 'transparent'});
+		          	$('.name-box .js-check').css({'opacity': 1});
+		          	$('.name-box .js-error').css({'opacity': 0});
+		          	checkForm[1] = true;
+		        }
+		        else if (this.value === '') {
+		          	$this.removeClass('focused');
+		          	$('.name-box label').css({'color': 'white'});
+		          	$('.name-box input + label + span').css({'opacity': 0});
+		          	checkForm[1] = false;
 		        }
 		        else {
-		          $this.removeClass('focused');
-		          $('.field:first-child input + label + span').css({'opacity': 0});
+		        	$this.addClass('focused');
+		        	$('.name-box label').css({'color': 'transparent'});
+		        	$('.name-box .js-check').css({'opacity': 0});
+		          	$('.name-box .js-error').css({'opacity': 1});
+		          	checkForm[1] = false;
+		        }
+
+		    });
+
+		});
+
+		$form.find('.email-box input').blur(function () {
+		    $form.find('.email-box input').each(function () {
+		        let $this = $(this);
+		        let regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		        if (regex.test(this.value) ) {
+		            $this.addClass('focused');
+		            $('.email-box label').css({'color': 'transparent'});
+		          	$('.email-box .js-check').css({'opacity': 1});
+		          	$('.email-box .js-error').css({'opacity': 0});
+		          	checkForm[2] = true;
+		        }
+		        else if (this.value === '') {
+		          	$this.removeClass('focused');
+		          	$('.email-box label').css({'color': 'white'});
+		          	$('.email-box input + label + span').css({'opacity': 0});
+		          	checkForm[2] = false;
+		        }
+		        else {
+		        	$this.addClass('focused');
+		        	$('.email-box label').css({'color': 'transparent'});
+		        	$('.email-box .js-check').css({'opacity': 0});
+		          	$('.email-box .js-error').css({'opacity': 1});
+		          	checkForm[2] = false;
 		        }
 		    });
 		});
 
-		$('#hire .field:nth-child(2) input').blur(function () {
-		    $('#hire .field:nth-child(2) input').each(function () {
-		        let $this = $(this);
-		        console.log(this.value)
-		        if ( this.value != '' ) {
-		          $this.addClass('focused');
-		          $('.field:nth-child(2) input + label + span').css({'opacity': 1});
-		        }
-		        else {
-		          $this.removeClass('focused');
-		          $('.field:nth-child(2) input + label + span').css({'opacity': 0});
-		        }
-		    });
-		});
+		$form.on('submit', (e) => {
+			e.preventDefault();
+			let check = 0; 
+
+			checkForm.forEach( (element, index) => {				
+				if(element) check++;
+			});
+
+			console.log(check)
+		})
 	}
 
 }

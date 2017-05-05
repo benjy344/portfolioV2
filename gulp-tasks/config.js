@@ -4,9 +4,10 @@ let config= {
         js: './assets/js/',
         scss: './assets/scss/',
         css: './assets/css/',
+        distCss: './dist/css/',
         dist: './dist/',
         fonts: './dist/assets/fonts/',
-        cssRelativeFonts: '../fonts/icons/',
+        cssRelativeFonts: '../assets/fonts/icons/',
         svg: './assets/img/svg-font/',
         templates: './assets/templates/'
     },

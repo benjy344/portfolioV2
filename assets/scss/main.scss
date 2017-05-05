@@ -5,7 +5,6 @@
 @import 'icons';
 @import 'animations';
 
-
 .main-nav {
     position: absolute;
     top: 0;
@@ -672,18 +671,23 @@
 
                 @include ease(333ms);
 
-                + span {
-                    font-family: $font-title;
-                    font-weight: 300;
-                    opacity: 0;
-                    color:white;
-                    display: block;
-                    position:absolute;
-                    top: 12px;
-                    left: 7%;
-                    font-size: $font-size;
+            }
+            span {
+                font-family: $font-title;
+                font-weight: 300;
+                opacity: 0;
+                color:white;
+                display: block;
+                position:absolute;
+                top: 3px;
+                left: 7%;
+                font-size: $font-size;
 
-                    @include ease(333ms);
+                @include ease(333ms);
+
+                &:before {
+                    font-size: 35px;
+                    color: white;
                 }
             }
 
@@ -770,6 +774,39 @@ footer {
     height: 80px;
     text-align: center;
     color: $grey;
+
+    p {
+        font-family: $font-title;
+        text-transform: uppercase;
+    }
+
+    .social {
+        display: block;
+        margin: 0 auto; 
+
+        ul {
+            display: flex;
+            justify-content: center;
+            li{
+                margin: 10px;
+            }
+            a {
+                &:before {
+                    color: $grey;
+                    font-size: 50px;
+                    @include ease(333ms);
+                }
+
+                &:hover {
+                    &:before {
+                        color: $purple;
+                        @include ease(333ms);
+                        font-size: 50px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .purple {

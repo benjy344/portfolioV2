@@ -1,9 +1,9 @@
 @font-face {
 	font-family: "main-iconfont";
-	src: url('../fonts/icons/main-iconfont.eot');
-	src: url('../fonts/icons/main-iconfont.eot?#iefix') format('eot'),
-		url('../fonts/icons/main-iconfont.woff') format('woff'),
-		url('../fonts/icons/main-iconfont.ttf') format('truetype');
+	src: url('../assets/fonts/icons/main-iconfont.eot');
+	src: url('../assets/fonts/icons/main-iconfont.eot?#iefix') format('eot'),
+		url('../assets/fonts/icons/main-iconfont.woff') format('woff'),
+		url('../assets/fonts/icons/main-iconfont.ttf') format('truetype');
 }
 
 .icon:before {
@@ -24,20 +24,28 @@
 }
 
 
-.icon-facebook:before {
+.icon-check:before {
 	content: "\EA01";
 }
 
-.icon-github:before {
+.icon-error:before {
 	content: "\EA02";
 }
 
-.icon-linkedin:before {
+.icon-facebook:before {
 	content: "\EA03";
 }
 
-.icon-twitter:before {
+.icon-github:before {
 	content: "\EA04";
+}
+
+.icon-linkedin:before {
+	content: "\EA05";
+}
+
+.icon-twitter:before {
+	content: "\EA06";
 }
 
 
@@ -45,28 +53,40 @@
 @mixin dior-icon($icon) {
 
 	
-	 @if  ($icon == "facebook") {
+	 @if  ($icon == "check") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA01";
 	}
 	
-	@else if ($icon == "github") {
+	@else if ($icon == "error") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA02";
 	}
 	
-	@else if ($icon == "linkedin") {
+	@else if ($icon == "facebook") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA03";
 	}
 	
-	@else if ($icon == "twitter") {
+	@else if ($icon == "github") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA04";
+	}
+	
+	@else if ($icon == "linkedin") {
+		-webkit-font-smoothing: antialiased;
+		font-family: "main-iconfont";
+		content: "\EA05";
+	}
+	
+	@else if ($icon == "twitter") {
+		-webkit-font-smoothing: antialiased;
+		font-family: "main-iconfont";
+		content: "\EA06";
 	}
 	
 }

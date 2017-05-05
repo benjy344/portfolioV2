@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport"           content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="./assets/css/main.css">
+	<link rel="stylesheet" href="./dist/css/main.css">
 	<!--<link href="./image/poulpeStop.svg" rel="shortcut icon" />-->
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 	<title>Portfolio-Benjamin Demaiziere</title>
@@ -367,7 +367,7 @@
 			<div class="prePortfolio ">
 				<h1 class="js-reval-right-long-delay">Portfolio</h1>
 				<div class="container flex">
-					<a href="#" class="tilter js-reval-top-delay">
+					<a href="#work1" class="tilter js-reval-top-delay js-open-galery" >
 						<figure class="tilter__figure">
 							<img class="tilter__image" src="assets/img/9.jpg" alt="img09" />
 							<div class="tilter__deco tilter__deco--shine"><div></div></div>
@@ -466,19 +466,22 @@
 				      <div class="field name-box">
 					        <input type="text" id="name" placeholder="Qui êtes vous?"/>
 			        		<label for="name">Nom</label>
-					        <span class="ss-icon">check</span>
+					        <span class="ss-icon icon icon-check js-check"></span>
+					        <span class="ss-icon icon icon-error js-error"></span>
 				      </div>
 
 				      <div class="field email-box">
 					        <input type="text" id="email" placeholder="exemple@email.com"/>
 					        <label for="email">Email</label>
-					        <span class="ss-icon">check</span>
+					        <span class="ss-icon icon icon-check js-check"></span>
+					        <span class="ss-icon icon icon-error js-error"></span>
 				      </div>
 
 				      <div class="field msg-box">
 					        <textarea id="msg" rows="4" placeholder="Laissez moi un message..."/></textarea>
 					        <label for="msg">Message</label>
-					        <span class="ss-icon">check</span>
+					        <span class="ss-icon icon icon-check js-check"></span>
+					        <span class="ss-icon icon icon-error js-error"></span>
 				      </div>
 
 				      <input class="button" type="submit" value="Envoyer" />
@@ -496,5 +499,9 @@
 			</nav>
 			<p>Benjamin Demaiziere - 2017</p>
 		</footer>
+
+		<div class="gallery-wrapper js-gallery-wrapper">
+			
+		</div>
 	</body>
 </html>

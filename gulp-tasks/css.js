@@ -23,11 +23,11 @@ function compile(cb) {
         .pipe(plumber(onError))
         .pipe(compass({
             config_file: './config.rb',
-            css: config.paths.css,
+            css: config.paths.distCss,
             sass: config.paths.scss
         }))
         .pipe(cssbeautify())
-        .pipe(gulp.dest(config.paths.css))
+        .pipe(gulp.dest(config.paths.distCss))
         .on('error', () => { cssErrors++; })
         .on('end', () => {
             if (!cssErrors) logger.success('Successful compilation');
