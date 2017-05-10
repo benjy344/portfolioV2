@@ -412,6 +412,8 @@ let App = {
 		          	$this.removeClass('focused');
 		          	$('.msg-box label').css({'color': 'white'});
 		          	$('.msg-box input + label + span').css({'opacity': 0});
+		          	$('.msg-box .js-check').css({'opacity': 0});
+		          	$('.msg-box .js-error').css({'opacity': 0});
 		          	checkForm[0] = false;
 		        }
 		        else {
@@ -485,12 +487,39 @@ let App = {
 
 		$form.on('submit', (e) => {
 			e.preventDefault();
-			let check = 0; 
+			let $errorMsg   = this.$el.find('.js-error-message');
+			let $successMsg = this.$el.find('.js-success-message');
+			let check       = 0; 
 
 			checkForm.forEach( (element, index) => {				
 				if(element) check++;
 			});
 
+			if ( check === 3 ) {
+				//can send form
+
+				let s = $form.serialize();
+
+				$.ajax({
+	                type: "POST",
+	                url: "../mail.php",
+	                data: s,
+	                  success: function() {
+	                    $('body').prepend('<div style="position:fixed; top:50%; z-index:2000;" class="alert alert-success">Votre email à bien été transmis !</div>')
+	                    .hide()
+	                    .fadeIn(1500);                    
+	                  },
+	                  error: function() {
+	                  	$('body').prepend('<div style="position:fixed; top:50%; z-index:2000;" class="alert alert-danger">L\'envoi du mail a échoué, veuillez réessayer SVP</div>')
+	                    .hide()
+	                    .fadeIn(1500);
+	                  }
+	           	});
+                return false;
+
+			} else {
+
+			}
 			console.log(check)
 		})
 	}
