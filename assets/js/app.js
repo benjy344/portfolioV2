@@ -254,7 +254,10 @@ let App = {
 		if($current.length) {
 			$wrapper.addClass('open');
 			App.$el.addClass('overflow-hidden');
-			$current.css( 'display', 'block' ).delay( 1000 ).addClass('visible');
+			$current.css( 'display', 'block' );
+			setTimeout(() => {
+				$current.addClass('visible');
+			}, 700)
 			$current.find('.js-read-more').on('click touch', (e)=> {
 				$current.addClass('show-more');
 			})
@@ -266,10 +269,13 @@ let App = {
 		let $wrapper   = App.$el.find('.js-gallery-wrapper');		
 		let $visible   = $wrapper.find('.visible');
 		
-		if($visible.length) {
-			$wrapper.removeClass('open');
-			App.$el.removeClass('overflow-hidden');
-			$visible.removeClass('visible show-more').delay( 1 ).css( 'display', 'none' );
+		if($visible.length) {			
+			$visible.removeClass('visible show-more');
+			setTimeout(() => {
+				$visible.css( 'display', 'none' );
+				$wrapper.removeClass('open');
+				App.$el.removeClass('overflow-hidden');
+			}, 700);
 		}
 	},
 

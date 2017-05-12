@@ -881,12 +881,17 @@ footer {
 
         &.show-more {
             height: 100%;
-            overflow: scroll;
+            overflow-y: scroll;
+            overflow-x: hidden;
             transition: all 0.5s;
             transition-delay: 0;
 
             .read-more {
                 display: none;
+            }
+            .more {
+                opacity: 1;
+                transition: opacity 0.5s;
             }
         }
 
@@ -920,6 +925,23 @@ footer {
                 border-radius: 20px;
                 margin-right: 4px;
             }
+
+            nav {
+                text-align: right;
+
+                .icon {
+                    display: inline-block;                    
+                    font-size: 40px;
+                    cursor: pointer;
+                    margin-left: 10px;
+                    color:$grey;
+
+                    &:hover {
+                        color: $purple;
+                        @include ease(333ms);
+                    }
+                }
+            }       
         }
         .right {
             vertical-align: top;
@@ -958,6 +980,11 @@ footer {
             color: $grey;
             text-align: justify;
             line-height: 20px;
+            position: relative;
+
+            a, strong, span {
+                padding: 0;
+            }
         }
     }
     .read-more {
@@ -991,8 +1018,47 @@ footer {
         }
     }
     .more {
-        margin-top: 100px;
+        margin-top: 30px;
         padding: 0 10%;
+        opacity: 1;
+        transition: opacity 0.5s;
+
+        .grid {
+            font-size: 0;
+
+            .col {
+                display: inline-block;
+                font-size: 15px;
+                box-sizing: border-box;
+                vertical-align: middle;
+
+                &.col-1 {
+                    width: 33.33%;
+                }
+
+                &.col-2 {
+                    width: 66.66%;
+                }
+
+                &.col-3 {
+                    width: 100%;
+                    text-align: center;
+                }
+
+                &.pad-left {
+                    padding-left: 20px;
+                }
+                 &.pad-right {
+                    padding-right: 20px;
+                }
+
+                img {
+                    width: 100%;
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
     }
     .close-galery {
         position: absolute;

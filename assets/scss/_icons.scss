@@ -56,6 +56,10 @@
 	content: "\EA08";
 }
 
+.icon-web:before {
+	content: "\EA09";
+}
+
 
 
 @mixin dior-icon($icon) {
@@ -107,6 +111,12 @@
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA08";
+	}
+	
+	@else if ($icon == "web") {
+		-webkit-font-smoothing: antialiased;
+		font-family: "main-iconfont";
+		content: "\EA09";
 	}
 	
 }

@@ -208,6 +208,10 @@ table {
   content: "\EA08";
 }
 
+.icon-web:before {
+  content: "\EA09";
+}
+
 @-webkit-keyframes draw {
   1% {
     stroke-width: 1;
@@ -1108,12 +1112,17 @@ footer .social ul a:hover:before {
 }
 .gallery-wrapper .work.show-more {
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   transition: all 0.5s;
   transition-delay: 0;
 }
 .gallery-wrapper .work.show-more .read-more {
   display: none;
+}
+.gallery-wrapper .work.show-more .more {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 .gallery-wrapper .work.visible {
   opacity: 1;
@@ -1143,6 +1152,24 @@ footer .social ul a:hover:before {
   line-height: 10px;
   border-radius: 20px;
   margin-right: 4px;
+}
+.gallery-wrapper .work .left nav {
+  text-align: right;
+}
+.gallery-wrapper .work .left nav .icon {
+  display: inline-block;
+  font-size: 40px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #494949;
+}
+.gallery-wrapper .work .left nav .icon:hover {
+  color: #9854f1;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
 }
 .gallery-wrapper .work .right {
   vertical-align: top;
@@ -1177,6 +1204,10 @@ footer .social ul a:hover:before {
   color: #494949;
   text-align: justify;
   line-height: 20px;
+  position: relative;
+}
+.gallery-wrapper .work p a, .gallery-wrapper .work p strong, .gallery-wrapper .work p span {
+  padding: 0;
 }
 .gallery-wrapper .read-more {
   position: absolute;
@@ -1216,8 +1247,40 @@ footer .social ul a:hover:before {
   transition: all 333ms ease-in-out;
 }
 .gallery-wrapper .more {
-  margin-top: 100px;
+  margin-top: 30px;
   padding: 0 10%;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.gallery-wrapper .more .grid {
+  font-size: 0;
+}
+.gallery-wrapper .more .grid .col {
+  display: inline-block;
+  font-size: 15px;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+.gallery-wrapper .more .grid .col.col-1 {
+  width: 33.33%;
+}
+.gallery-wrapper .more .grid .col.col-2 {
+  width: 66.66%;
+}
+.gallery-wrapper .more .grid .col.col-3 {
+  width: 100%;
+  text-align: center;
+}
+.gallery-wrapper .more .grid .col.pad-left {
+  padding-left: 20px;
+}
+.gallery-wrapper .more .grid .col.pad-right {
+  padding-right: 20px;
+}
+.gallery-wrapper .more .grid .col img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 .gallery-wrapper .close-galery {
   position: absolute;
