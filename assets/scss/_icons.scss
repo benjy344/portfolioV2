@@ -28,24 +28,32 @@
 	content: "\EA01";
 }
 
-.icon-error:before {
+.icon-close:before {
 	content: "\EA02";
 }
 
-.icon-facebook:before {
+.icon-error:before {
 	content: "\EA03";
 }
 
-.icon-github:before {
+.icon-facebook:before {
 	content: "\EA04";
 }
 
-.icon-linkedin:before {
+.icon-github:before {
 	content: "\EA05";
 }
 
-.icon-twitter:before {
+.icon-linkedin:before {
 	content: "\EA06";
+}
+
+.icon-read-more:before {
+	content: "\EA07";
+}
+
+.icon-twitter:before {
+	content: "\EA08";
 }
 
 
@@ -59,34 +67,46 @@
 		content: "\EA01";
 	}
 	
-	@else if ($icon == "error") {
+	@else if ($icon == "close") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA02";
 	}
 	
-	@else if ($icon == "facebook") {
+	@else if ($icon == "error") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA03";
 	}
 	
-	@else if ($icon == "github") {
+	@else if ($icon == "facebook") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA04";
 	}
 	
-	@else if ($icon == "linkedin") {
+	@else if ($icon == "github") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA05";
 	}
 	
-	@else if ($icon == "twitter") {
+	@else if ($icon == "linkedin") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA06";
+	}
+	
+	@else if ($icon == "read-more") {
+		-webkit-font-smoothing: antialiased;
+		font-family: "main-iconfont";
+		content: "\EA07";
+	}
+	
+	@else if ($icon == "twitter") {
+		-webkit-font-smoothing: antialiased;
+		font-family: "main-iconfont";
+		content: "\EA08";
 	}
 	
 }

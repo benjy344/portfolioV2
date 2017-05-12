@@ -246,9 +246,31 @@ let App = {
 
 	openGalery(e) {
 		e.preventDefault();
-
-		let target = $(e.target).attr('href');
+		let $wrapper   = App.$el.find('.js-gallery-wrapper');
+		let target     = $(e.target).attr('href');
+		let $current   = $wrapper.find(target);
+		let $close     = $wrapper.find('.js-close-galery');
 		
+		if($current.length) {
+			$wrapper.addClass('open');
+			App.$el.addClass('overflow-hidden');
+			$current.css( 'display', 'block' ).delay( 1000 ).addClass('visible');
+			$current.find('.js-read-more').on('click touch', (e)=> {
+				$current.addClass('show-more');
+			})
+			$close.on('click touch', App.closeGalery)
+		}
+	},
+
+	closeGalery() {
+		let $wrapper   = App.$el.find('.js-gallery-wrapper');		
+		let $visible   = $wrapper.find('.visible');
+		
+		if($visible.length) {
+			$wrapper.removeClass('open');
+			App.$el.removeClass('overflow-hidden');
+			$visible.removeClass('visible show-more').delay( 1 ).css( 'display', 'none' );
+		}
 	},
 
 	scroll() {

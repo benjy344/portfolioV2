@@ -16,6 +16,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
   line-height: 1;
+  overflow-x: hidden;
 }
 
 ol, ul {
@@ -179,24 +180,32 @@ table {
   content: "\EA01";
 }
 
-.icon-error:before {
+.icon-close:before {
   content: "\EA02";
 }
 
-.icon-facebook:before {
+.icon-error:before {
   content: "\EA03";
 }
 
-.icon-github:before {
+.icon-facebook:before {
   content: "\EA04";
 }
 
-.icon-linkedin:before {
+.icon-github:before {
   content: "\EA05";
 }
 
-.icon-twitter:before {
+.icon-linkedin:before {
   content: "\EA06";
+}
+
+.icon-read-more:before {
+  content: "\EA07";
+}
+
+.icon-twitter:before {
+  content: "\EA08";
 }
 
 @-webkit-keyframes draw {
@@ -283,6 +292,19 @@ table {
     fill-opacity: 1;
   }
 }
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  position: absolute;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9854f1;
+}
+
 .main-nav {
   position: absolute;
   top: 0;
@@ -378,6 +400,10 @@ table {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  overflow: hidden;
+}
+
+.overflow-hidden {
   overflow: hidden;
 }
 
@@ -1022,6 +1048,213 @@ footer .social ul a:hover:before {
   font-size: 50px;
 }
 
+.gallery-wrapper {
+  position: fixed;
+  z-index: 3000;
+  background: transparent;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: -100%;
+  transition-delay: 0.6s;
+}
+.gallery-wrapper.open {
+  top: 0;
+  transition-delay: 0.6s;
+}
+.gallery-wrapper.open .background-rounded {
+  -moz-transition: all 0.6s linear;
+  -o-transition: all 0.6s linear;
+  -webkit-transition: all 0.6s linear;
+  transition: all 0.6s linear;
+  height: 400vh;
+  width: 400vh;
+}
+.gallery-wrapper.open .close-galery {
+  opacity: 1;
+  transition: opacity 0.7s;
+  transition-delay: 0.6s;
+}
+.gallery-wrapper .background-rounded {
+  background: white;
+  border-radius: 100%;
+  height: 0;
+  width: 0;
+  position: absolute;
+  transform: translateX(-25%) translateY(-25%);
+  z-index: -1;
+  -moz-transition: all 0.6s linear;
+  -o-transition: all 0.6s linear;
+  -webkit-transition: all 0.6s linear;
+  transition: all 0.6s linear;
+}
+.gallery-wrapper .work {
+  display: none;
+  color: black;
+  height: 85%;
+  width: 85%;
+  background: white;
+  -o-box-shadow: 0px 0px 20px 1px #494949;
+  box-shadow: 0px 0px 20px 1px #494949;
+  filter: progid:DXImageTransform.Microsoft.Shadow(color=$grey, Direction=180, Strength=20);
+  position: absolute;
+  transform: translateX(-50%) translateY(0%);
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transition: all 1.5s;
+  font-size: 0;
+  overflow: hidden;
+}
+.gallery-wrapper .work.show-more {
+  height: 100%;
+  overflow: scroll;
+  transition: all 0.5s;
+  transition-delay: 0;
+}
+.gallery-wrapper .work.show-more .read-more {
+  display: none;
+}
+.gallery-wrapper .work.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-50%);
+  transition: all 1.5s;
+  transition-delay: 0s;
+}
+.gallery-wrapper .work .left {
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  font-size: inherit;
+  padding: 10%;
+  vertical-align: top;
+}
+.gallery-wrapper .work .left ul {
+  font-size: 0;
+  margin: 10px 0;
+}
+.gallery-wrapper .work .left li {
+  display: inline-block;
+  color: white;
+  padding: 5px;
+  background: #9854f1;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 10px;
+  line-height: 10px;
+  border-radius: 20px;
+  margin-right: 4px;
+}
+.gallery-wrapper .work .right {
+  vertical-align: top;
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  font-size: inherit;
+  max-height: 100%;
+  overflow: hidden;
+}
+.gallery-wrapper .work .right img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+.gallery-wrapper .work h2 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 40px;
+  color: #494949;
+  text-transform: uppercase;
+}
+.gallery-wrapper .work h3 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  color: #D3D3D3;
+  margin-left: 60%;
+}
+.gallery-wrapper .work p {
+  margin: 20px 0;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 15px;
+  color: #494949;
+  text-align: justify;
+  line-height: 20px;
+}
+.gallery-wrapper .read-more {
+  position: absolute;
+  font-size: 80px;
+  color: #494949;
+  bottom: 40px;
+  right: 50%;
+  transform: translateX(50%);
+  cursor: pointer;
+}
+.gallery-wrapper .read-more:after {
+  content: "";
+  height: 30px;
+  width: 30px;
+  display: block;
+  background: #b483f5;
+  position: absolute;
+  border-radius: 200px;
+  top: 33px;
+  left: 13px;
+  z-index: -1;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+.gallery-wrapper .read-more:hover:after {
+  height: 40px;
+  width: 40px;
+  top: 28px;
+  left: 10px;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+.gallery-wrapper .more {
+  margin-top: 100px;
+  padding: 0 10%;
+}
+.gallery-wrapper .close-galery {
+  position: absolute;
+  font-size: 70px;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  color: #494949;
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+.gallery-wrapper .close-galery:hover:after {
+  background: #b483f5;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+.gallery-wrapper .close-galery:after {
+  content: "";
+  height: 40px;
+  width: 40px;
+  display: block;
+  background: transparent;
+  position: absolute;
+  border-radius: 200px;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+  top: 10px;
+  left: 4px;
+  z-index: -1;
+}
+
 .overlay {
   position: fixed;
   background: rgba(0, 0, 0, 0.3);
@@ -1031,8 +1264,10 @@ footer .social ul a:hover:before {
   right: 0;
   z-index: 200;
   cursor: pointer;
+  display: none;
 }
 .overlay .popin {
+  display: none;
   height: 200px;
   width: 400px;
   background: white;
