@@ -423,7 +423,6 @@ let App = {
 		$form.find('textarea').blur(function () {
 			console.log('blur')
 		    $form.find('textarea').each(function () {
-		    	console.log('value', this.value === '')
 		        let $this = $(this);
 		        let regex = new RegExp("^[a-zA-ZÀ-úÀ-ÿ0-9$€. ]+$");
 
@@ -436,7 +435,6 @@ let App = {
 		          	checkForm[0] = true;
 		        }
 		        else if (this.value === '') {
-		        	console.log('coucuo')
 		          	$this.removeClass('focused');
 		          	$('.msg-box label').css({'color': 'white'});
 		          	$('.msg-box input + label + span').css({'opacity': 0});
@@ -548,7 +546,6 @@ let App = {
 			} else {
 
 			}
-			console.log(check)
 		})
 	}
 

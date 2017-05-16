@@ -421,7 +421,7 @@ table {
 .intro .main-bg {
   height: 100vh;
   width: 100vw;
-  background: url(../img/main-bg-min.jpeg);
+  background: url(../../assets/img/main-bg-min.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1136,7 +1136,7 @@ footer .social ul a:hover:before {
   box-sizing: border-box;
   font-size: inherit;
   padding: 10%;
-  vertical-align: top;
+  vertical-align: middle;
 }
 .gallery-wrapper .work .left ul {
   font-size: 0;
@@ -1172,7 +1172,7 @@ footer .social ul a:hover:before {
   transition: all 333ms ease-in-out;
 }
 .gallery-wrapper .work .right {
-  vertical-align: top;
+  vertical-align: middle;
   display: inline-block;
   width: 50%;
   box-sizing: border-box;
@@ -1195,7 +1195,7 @@ footer .social ul a:hover:before {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 20px;
   color: #D3D3D3;
-  margin-left: 60%;
+  text-align: right;
 }
 .gallery-wrapper .work p {
   margin: 20px 0;
@@ -1217,6 +1217,7 @@ footer .social ul a:hover:before {
   right: 50%;
   transform: translateX(50%);
   cursor: pointer;
+  z-index: 200;
 }
 .gallery-wrapper .read-more:after {
   content: "";
@@ -1247,9 +1248,8 @@ footer .social ul a:hover:before {
   transition: all 333ms ease-in-out;
 }
 .gallery-wrapper .more {
-  margin-top: 30px;
   padding: 0 10%;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.5s;
 }
 .gallery-wrapper .more .grid {
