@@ -252,11 +252,12 @@ let App = {
 		let $close     = $wrapper.find('.js-close-galery');
 		
 		if($current.length) {
-			$wrapper.addClass('open');
+			$wrapper.addClass('open');			
 			App.$el.addClass('overflow-hidden');
 			$current.css( 'display', 'block' );
 			setTimeout(() => {
 				$current.addClass('visible');
+				$current.find('.left, .right').css('height', $current.find('.left').outerHeight());
 			}, 700)
 			$current.find('.js-read-more').on('click touch', (e)=> {
 				$current.addClass('show-more');
@@ -269,12 +270,13 @@ let App = {
 		let $wrapper   = App.$el.find('.js-gallery-wrapper');		
 		let $visible   = $wrapper.find('.visible');
 		
-		if($visible.length) {			
-			$visible.removeClass('visible show-more');
-			setTimeout(() => {
+		if($visible.length) {
+		    $visible.animate({scrollTop:0}, '100');			
+			$visible.removeClass('visible show-more');			
+			setTimeout(() => {				
 				$visible.css( 'display', 'none' );
 				$wrapper.removeClass('open');
-				App.$el.removeClass('overflow-hidden');
+				App.$el.removeClass('overflow-hidden');				
 			}, 700);
 		}
 	},
@@ -382,6 +384,7 @@ let App = {
     },
 
     initPortfolioPreview() {
+
 		let idx = 0;
 		[].slice.call($('a.tilter')).forEach((el, pos) => { 
 			idx = pos%2 === 0 ? idx+1 : idx;

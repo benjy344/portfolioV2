@@ -24,40 +24,44 @@
 }
 
 
-.icon-check:before {
+.icon-attachment:before {
 	content: "\EA01";
 }
 
-.icon-close:before {
+.icon-check:before {
 	content: "\EA02";
 }
 
-.icon-error:before {
+.icon-close:before {
 	content: "\EA03";
 }
 
-.icon-facebook:before {
+.icon-error:before {
 	content: "\EA04";
 }
 
-.icon-github:before {
+.icon-facebook:before {
 	content: "\EA05";
 }
 
-.icon-linkedin:before {
+.icon-github:before {
 	content: "\EA06";
 }
 
-.icon-read-more:before {
+.icon-linkedin:before {
 	content: "\EA07";
 }
 
-.icon-twitter:before {
+.icon-read-more:before {
 	content: "\EA08";
 }
 
-.icon-web:before {
+.icon-twitter:before {
 	content: "\EA09";
+}
+
+.icon-web:before {
+	content: "\EA0A";
 }
 
 
@@ -65,58 +69,64 @@
 @mixin dior-icon($icon) {
 
 	
-	 @if  ($icon == "check") {
+	 @if  ($icon == "attachment") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA01";
 	}
 	
-	@else if ($icon == "close") {
+	@else if ($icon == "check") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA02";
 	}
 	
-	@else if ($icon == "error") {
+	@else if ($icon == "close") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA03";
 	}
 	
-	@else if ($icon == "facebook") {
+	@else if ($icon == "error") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA04";
 	}
 	
-	@else if ($icon == "github") {
+	@else if ($icon == "facebook") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA05";
 	}
 	
-	@else if ($icon == "linkedin") {
+	@else if ($icon == "github") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA06";
 	}
 	
-	@else if ($icon == "read-more") {
+	@else if ($icon == "linkedin") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA07";
 	}
 	
-	@else if ($icon == "twitter") {
+	@else if ($icon == "read-more") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA08";
 	}
 	
-	@else if ($icon == "web") {
+	@else if ($icon == "twitter") {
 		-webkit-font-smoothing: antialiased;
 		font-family: "main-iconfont";
 		content: "\EA09";
+	}
+	
+	@else if ($icon == "web") {
+		-webkit-font-smoothing: antialiased;
+		font-family: "main-iconfont";
+		content: "\EA0A";
 	}
 	
 }

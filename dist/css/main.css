@@ -176,40 +176,44 @@ table {
   opacity: 0;
 }
 
-.icon-check:before {
+.icon-attachment:before {
   content: "\EA01";
 }
 
-.icon-close:before {
+.icon-check:before {
   content: "\EA02";
 }
 
-.icon-error:before {
+.icon-close:before {
   content: "\EA03";
 }
 
-.icon-facebook:before {
+.icon-error:before {
   content: "\EA04";
 }
 
-.icon-github:before {
+.icon-facebook:before {
   content: "\EA05";
 }
 
-.icon-linkedin:before {
+.icon-github:before {
   content: "\EA06";
 }
 
-.icon-read-more:before {
+.icon-linkedin:before {
   content: "\EA07";
 }
 
-.icon-twitter:before {
+.icon-read-more:before {
   content: "\EA08";
 }
 
-.icon-web:before {
+.icon-twitter:before {
   content: "\EA09";
+}
+
+.icon-web:before {
+  content: "\EA0A";
 }
 
 @-webkit-keyframes draw {
@@ -1137,6 +1141,7 @@ footer .social ul a:hover:before {
   font-size: inherit;
   padding: 10%;
   vertical-align: middle;
+  height: 100%;
 }
 .gallery-wrapper .work .left ul {
   font-size: 0;
@@ -1177,13 +1182,19 @@ footer .social ul a:hover:before {
   width: 50%;
   box-sizing: border-box;
   font-size: inherit;
-  max-height: 100%;
   overflow: hidden;
 }
 .gallery-wrapper .work .right img {
   width: 100%;
   height: auto;
   max-height: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+.gallery-wrapper .work .right .vertical-align {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
 .gallery-wrapper .work h2 {
   font-family: "Source Sans Pro", sans-serif;
@@ -1213,7 +1224,7 @@ footer .social ul a:hover:before {
   position: absolute;
   font-size: 80px;
   color: #494949;
-  bottom: 40px;
+  bottom: 0px;
   right: 50%;
   transform: translateX(50%);
   cursor: pointer;
@@ -1251,6 +1262,7 @@ footer .social ul a:hover:before {
   padding: 0 10%;
   opacity: 0;
   transition: opacity 0.5s;
+  padding-bottom: 80px;
 }
 .gallery-wrapper .more .grid {
   font-size: 0;
