@@ -202,6 +202,11 @@ let App = {
 
 		//init form 
 		if (this.$form.length) this.initForm();
+
+		//scrollto mobile 
+		this.$el.find('.js-readmore-mobile').on('touchstart', (e) => {
+
+		})
 		
 	},
 
@@ -250,7 +255,7 @@ let App = {
 		let target     = $(e.target).attr('href');
 		let $current   = $wrapper.find(target);
 		let $close     = $wrapper.find('.js-close-galery');
-		
+		console.log($wrapper, target, $current)
 		if($current.length) {
 			$wrapper.addClass('open');			
 			App.$el.addClass('overflow-hidden');
@@ -424,13 +429,11 @@ let App = {
 		let checkForm = [ false, false, false];
 
 		$form.find('textarea').blur(function () {
-			console.log('blur')
 		    $form.find('textarea').each(function () {
 		        let $this = $(this);
 		        let regex = new RegExp("^[a-zA-ZÀ-úÀ-ÿ0-9$€. ]+$");
 
 		        if (regex.test(this.value) ) {
-		        	console.log('regex');
 		            $this.addClass('focused');
 		            $('.msg-box label').css({'color': 'transparent'});
 		          	$('.msg-box .js-check').css({'opacity': 1});
