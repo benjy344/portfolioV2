@@ -528,31 +528,46 @@ let App = {
 			checkForm.forEach( (element, index) => {				
 				if(element) check++;
 			});
-
 			if ( check === 3 ) {
 				//can send form
-
 				let s = $form.serialize();
-
+				console.log(s)
 				$.ajax({
 	                type: "POST",
 	                url: "../mail.php",
 	                data: s,
-	                  success: function() {
-	                    $('body').prepend('<div style="position:fixed; top:50%; z-index:2000;" class="alert alert-success">Votre email à bien été transmis !</div>')
-	                    .hide()
-	                    .fadeIn(1500);                    
+	                dataType: 'json',
+	                  success: (data) => {
+	                  	console.log(data, data.success)
+	                  	if (data.success) {
+	                  		$('.js-overlay, .js-success-message').fadeIn(500);	                     
+
+		                    setTimeout(()=>{
+		                    	$('.js-overlay, .js-success-message').fadeOut(500);
+		                    	$form.find('input[type="submit"]').attr('disabled', true);
+		                }, 2000);
+	                  	} else {
+	                  		$('.js-error-msg').text('Une erreur est survenue..');
+							$('.js-overlay, .js-error-message').fadeIn(500);                   
+
+					        setTimeout(()=>{$('.js-overlay, .js-error-message').fadeOut(500);}, 2000);
+	                  	}
 	                  },
-	                  error: function() {
-	                  	$('body').prepend('<div style="position:fixed; top:50%; z-index:2000;" class="alert alert-danger">L\'envoi du mail a échoué, veuillez réessayer SVP</div>')
-	                    .hide()
-	                    .fadeIn(1500);
+	                  error: (data) => {
+	                  	$('.js-error-msg').text('Une erreur est survenue..');
+						$('.js-overlay, .js-error-message').fadeIn(500);                   
+
+				        setTimeout(()=>{$('.js-overlay, .js-error-message').fadeOut(500);}, 2000);
 	                  }
 	           	});
                 return false;
 
 			} else {
+				$('.js-error-msg').text('Un des champs possède une erreur..');
+				$('.js-overlay, .js-error-message').fadeIn(500);
 
+		        setTimeout(()=>{$('.js-overlay, .js-error-message').fadeOut(500);}, 2000);
+	                  	
 			}
 		})
 	}

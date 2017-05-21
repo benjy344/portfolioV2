@@ -773,6 +773,21 @@
             border: 1px solid white;
             cursor: pointer;
             @include ease;
+            outline: none;
+
+            &[disabled] {
+                cursor: auto;
+                background: $grey-light;
+                &:hover {
+                    border: 1px solid $grey-light;
+                    background: $grey-light;
+                }
+
+                &:focus {
+                    border: 1px solid $grey-light;
+                    background: $grey-light;
+                }
+            }
             
             &:hover {
                 border: 1px solid $purple;
@@ -1118,13 +1133,26 @@ footer {
     
     .popin {
         display: none;
-        height: 200px;
+        height: 150px;
         width: 400px;
         background: white; 
         position: absolute;
         top: 50%;
         left: 50%;
+        text-align: center;
         transform: translateX(-50%) translateY(-50%);
+
+        span {
+            display: block;
+            margin-top: 20px;
+            font-family: $font-title;
+            text-transform: uppercase;
+            color: $grey;
+        }
+        .icon {
+            font-size: 40px;
+            color: $grey-light;
+        }
 
         &.popin-error {
             display: none; 

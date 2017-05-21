@@ -5,20 +5,12 @@
     	********************************************************************************************
     */
     // destinataire est votre adresse mail. Pour envoyer à plusieurs à la fois, séparez-les par une virgule
-    $destinataire = 'contact@andrearey.fr';
+    $destinataire = 'contact@benjamin-demaiziere.fr';
      
     // copie ? (envoie une copie au visiteur)
     $copie = 'oui'; // 'oui' ou 'non'
 
     $data = array();
-     
-    // Messages de confirmation du mail
-    $message_envoye = '<div class="alert alert-success">Votre email à bien été transmis !</div>';
-    $message_non_envoye = '<div class="alert alert-danger">envoi du mail a échoué, veuillez réessayer SVP</div>';
-     
-    // Messages d'erreur du formulaire
-    $message_erreur_formulaire = '<div class="alert alert-danger">Vous devez envoyer le formulaire</div>';
-    $message_formulaire_invalide = '<div class="alert alert-danger">Vérifiez que tous les champs soient bien remplis</div>';
      
     /*
     	********************************************************************************************
@@ -27,10 +19,10 @@
     */
      
     // on teste si le formulaire a été soumis
-    if (!isset($_POST['envoi']))
+    if (!isset($_POST))
     {
     	// formulaire non envoyé
-    	echo $message_erreur_formulaire;
+    	echo json_encode(['reponse' => 'ko']);
     }
     else
     {
@@ -59,15 +51,14 @@
     	}
      
     	// formulaire envoyé, on récupère tous les champs.
-    	$nom     = (isset($_POST['nom']))     ? Rec($_POST['nom'])     : '';
+    	$nom     = (isset($_POST['name']))     ? Rec($_POST['name'])     : '';
     	$email   = (isset($_POST['email']))   ? Rec($_POST['email'])   : '';
-    	$objet   = (isset($_POST['objet']))   ? Rec($_POST['objet'])   : '';
-    	$message = (isset($_POST['message'])) ? Rec($_POST['message']) : '';
+    	$message = (isset($_POST['msg'])) ? Rec($_POST['msg']) : '';
      
     	// On va vérifier les variables et l'email ...
     	$email = (IsEmail($email)) ? $email : ''; // soit l'email est vide si erroné, soit il vaut l'email entré
      
-    	if (($nom != '') && ($email != '') && ($objet != '') && ($message != ''))
+    	if (($nom != '') && ($email != '') && ($message != ''))
     	{
     		// les 4 variables sont remplies, on génère puis envoie le mail
     		$headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -109,23 +100,23 @@
      
     		if ((($copie == 'oui') && ($num_emails == 2)) || (($copie == 'non') && ($num_emails == 1)))
     		{
-				$data['success']['title'] = $message_envoye;
+				$data['success'] = true;
     			
     		}
     		else
     		{
-    			$data['error']['title'] = $message_non_envoye;
+    			$data['error'] = true;
 				
     		};
     	}
     	else
     	{
     		// une des 3 variables (ou plus) est vide ...
-    		$data['error']['title'] = $message_formulaire_invalide;
+    		$data['error'] = true;
 			
     	};
 
-        echo json_encode($data);
+        echo json_encode($data);//json_encode($data);
     }; // fin du if (!isset($_POST['envoi']))
 
     ?>

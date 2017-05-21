@@ -556,27 +556,27 @@
 				<section id="hire">
 				    <h1>Contactez moi </h1>
 				      <div class="field name-box">
-					        <input type="text" id="name" placeholder="Qui êtes vous?"/>
+					        <input type="text" id="name" name="name" placeholder="Qui êtes vous?"/>
 			        		<label for="name">Nom</label>
 					        <span class="ss-icon icon icon-check js-check"></span>
 					        <span class="ss-icon icon icon-error js-error"></span>
 				      </div>
 
 				      <div class="field email-box">
-					        <input type="text" id="email" placeholder="exemple@email.com"/>
+					        <input type="text" id="email" name="email"  placeholder="exemple@email.com"/>
 					        <label for="email">Email</label>
 					        <span class="ss-icon icon icon-check js-check"></span>
 					        <span class="ss-icon icon icon-error js-error"></span>
 				      </div>
 
 				      <div class="field msg-box">
-					        <textarea id="msg" rows="4" placeholder="Laissez moi un message..."/></textarea>
+					        <textarea id="msg" rows="4" placeholder="Laissez moi un message..." name="msg"/></textarea>
 					        <label for="msg">Message</label>
 					        <span class="ss-icon icon icon-check js-check"></span>
 					        <span class="ss-icon icon icon-error js-error"></span>
 				      </div>
 
-				      <input class="button" type="submit" value="Envoyer" />
+				      <input class="button" type="submit" value="Envoyer" name="submit" />
 				</section>
 			</form>
 		</section>
@@ -924,8 +924,14 @@
 			</section>
 		</div>
 		<div class="overlay js-overlay">
-			<div class="popin popin-success js-success-message"></div>
-			<div class="popin popin-error js-error-message"></div>
+			<div class="popin popin-success js-success-message">
+				<span class="icon icon-check"></span>
+				<span>Votre message à bien été envoyé !</span>
+			</div>
+			<div class="popin popin-error js-error-message">
+				<span class="icon icon-error"></span>
+				<span class="js-error-msg"></span>
+			</div>
 		</div>
 	</body>
 </html>
