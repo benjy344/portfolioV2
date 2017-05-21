@@ -1,7 +1,7 @@
 let async      = require('async');
 let concat     = require('./concat.js');
 let js         = require('./babelify.js');
-let Logger     = require('./Logger.js');
+let Logger     = require('./logger.js');
 let uglify     = require('./uglify.js');
 
 let logger = new Logger('JS');

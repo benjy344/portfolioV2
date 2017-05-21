@@ -204,8 +204,10 @@ let App = {
 		if (this.$form.length) this.initForm();
 
 		//scrollto mobile 
-		this.$el.find('.js-readmore-mobile').on('touchstart', (e) => {
-
+		this.$el.find('.js-readmore-mobile').on('touch click', (e) => {
+			this.$el.animate({
+		        scrollTop: this.$el.find('.second-section').offset().top
+		    }, 1000);
 		})
 		
 	},
